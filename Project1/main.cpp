@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include "Player.hpp"
-#include "Enemy.hpp"
 #include "Grid.hpp"
 #include <vector>
+#include "EnemyManager.hpp"
+
+EnemyManager manager;
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -12,9 +14,12 @@ int main() {
     window.setFramerateLimit(60);
 
     Player player(200, 400);
-    vector<Enemy> enemies = { Enemy(100, 100), Enemy(700, 100) };
     Grid grid;
     grid.loadFromFile("map.txt");
+
+    manager.createMGSPatrol(300, 300);
+    manager.createMGSPatrol(500, 300);
+    manager.createMGSPatrol(600, 300);
 
     Clock clock;
 
@@ -28,16 +33,16 @@ int main() {
                 window.close();
         }
 
-        player.update(deltaTime, grid);
-        for (auto& enemy : enemies) {
-            enemy.update(deltaTime, grid);
+        if (Keyboard::isKeyPressed(Keyboard::W)) {
+            manager.setMenacedState(true);
         }
+
+        player.update(deltaTime, grid);
 
         window.clear();
         grid.draw(window);
         window.draw(player.shape);
-        for (const auto& enemy : enemies)
-            window.draw(enemy.shape);
+        manager.update(window,deltaTime,grid);
         window.display();
     }
     return 0;
