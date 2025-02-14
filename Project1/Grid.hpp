@@ -8,9 +8,9 @@
 using namespace std;
 using namespace sf;
 
-const int GRID_WIDTH = 20;
-const int GRID_HEIGHT = 15;
-const int CELL_SIZE = 40;
+const int GRID_WIDTH = 40;
+const int GRID_HEIGHT = 30;
+const int CELL_SIZE = 25;
 
 struct Cell {
     bool walkable;
