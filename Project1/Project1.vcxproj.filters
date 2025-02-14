@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\BehaviorTree">
+      <UniqueIdentifier>{dd81f010-3b58-4f0e-9415-b8525cd379aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\BehaviorTree\Composite">
+      <UniqueIdentifier>{0420f105-18f5-4d22-b6db-a9027efc55a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\BehaviorTree\Leaf">
+      <UniqueIdentifier>{e70206f5-60f9-4eed-b012-213d6a3af6b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,6 +39,12 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="PatrolMGS.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp">
@@ -43,6 +58,24 @@
     </ClInclude>
     <ClInclude Include="Grid.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PatrolMGS.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="BTNode.hpp">
+      <Filter>Fichiers d%27en-tête\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="Blackboard.hpp">
+      <Filter>Fichiers d%27en-tête\BehaviorTree</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectorNode.hpp">
+      <Filter>Fichiers d%27en-tête\BehaviorTree\Composite</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceNode.hpp">
+      <Filter>Fichiers d%27en-tête\BehaviorTree\Composite</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
