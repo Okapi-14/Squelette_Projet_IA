@@ -4,7 +4,7 @@
 
 
 Grid::Grid() {
-    cells.resize(GRID_HEIGHT, std::vector<Cell>(GRID_WIDTH, { true, {0, 0}, sf::RectangleShape(sf::Vector2f(CELL_SIZE, CELL_SIZE)) }));
+    cells.resize(GRID_HEIGHT, vector<Cell>(GRID_WIDTH, { true, {0, 0}, RectangleShape(Vector2f(CELL_SIZE, CELL_SIZE)) }));
     for (int y = 0; y < GRID_HEIGHT; ++y) {
         for (int x = 0; x < GRID_WIDTH; ++x) {
             cells[y][x].position = sf::Vector2f(x * CELL_SIZE, y * CELL_SIZE);
@@ -16,20 +16,20 @@ Grid::Grid() {
     }
 }
 
-void Grid::loadFromFile(const std::string& filename) {
-    std::ifstream file(filename);
+void Grid::loadFromFile(const string& filename) {
+    ifstream file(filename);
     if (!file) {
-        std::cerr << "Erreur : Impossible d'ouvrir le fichier " << filename << std::endl;
+        cerr << "Erreur : Impossible d'ouvrir le fichier " << filename << endl;
         return;
     }
 
     for (int y = 0; y < GRID_HEIGHT; ++y) {
-        std::string line;
-        if (!std::getline(file, line)) break;
+        string line;
+        if (!getline(file, line)) break;
         for (int x = 0; x < GRID_WIDTH && x < line.size(); ++x) {
             cells[y][x].walkable = (line[x] == '0');
             if (!cells[y][x].walkable) {
-                cells[y][x].shape.setFillColor(sf::Color::White);
+                cells[y][x].shape.setFillColor(Color::White);
             }
         }
     }
