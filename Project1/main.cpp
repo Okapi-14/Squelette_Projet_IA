@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Player.hpp"
 #include "Grid.hpp"
 #include <vector>
@@ -14,12 +15,13 @@ int main() {
     window.setFramerateLimit(60);
 
     Player player(200, 400);
+
+    //vector<Enemy> enemies = { Enemy(100, 100), Enemy(700, 100) };
     Grid grid;
     grid.loadFromFile("map.txt");
 
-    manager.createMGSPatrol(300, 300);
-    manager.createMGSPatrol(500, 300);
-    manager.createMGSPatrol(600, 300);
+    manager.createMGSPatrol(400, 400);
+    manager.createMGSPatrol(500, 500);
 
     Clock clock;
 
@@ -34,7 +36,7 @@ int main() {
         }
 
         if (Keyboard::isKeyPressed(Keyboard::W)) {
-            manager.setMenacedState(true);
+            manager.setMenacedState();
         }
 
         player.update(deltaTime, grid);
@@ -42,7 +44,7 @@ int main() {
         window.clear();
         grid.draw(window);
         window.draw(player.shape);
-        manager.update(window,deltaTime,grid);
+        manager.update(window,deltaTime,grid,player.shape.getGlobalBounds());
         window.display();
     }
     return 0;

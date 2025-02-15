@@ -1,6 +1,6 @@
 #include "BTNode.hpp"
 
-class SelectorNode : public BTNode {
+class SequenceAlerte : public BTNode {
 private:
     vector<unique_ptr<BTNode>> children;
 public:
@@ -9,10 +9,10 @@ public:
     }
     NodeState execute() override {
         for (auto& child : children) {
-            if (child->execute() == NodeState::SUCCESS) {
-                return NodeState::SUCCESS;
+            if (child->execute() == NodeState::FAILURE) {
+                return NodeState::FAILURE;
             }
         }
-        return NodeState::FAILURE;
+        return NodeState::SUCCESS;
     }
 };
