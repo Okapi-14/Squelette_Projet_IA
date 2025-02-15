@@ -4,6 +4,9 @@
 #include "Enemy.hpp"
 #include "Grid.hpp"
 #include <vector>
+#include "EnemyManager.hpp"
+
+EnemyManager manager;
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -13,9 +16,12 @@ int main() {
     window.setFramerateLimit(60);
 
     Player player(200, 400);
-    vector<Enemy> enemies = { Enemy(100, 100), Enemy(700, 100) };
+    //vector<Enemy> enemies = { Enemy(100, 100), Enemy(700, 100) };
     Grid grid;
     grid.loadFromFile("map.txt");
+
+    manager.createMGSPatrol(400, 400);
+    manager.createMGSPatrol(500, 500);
 
     Clock clock;
 
