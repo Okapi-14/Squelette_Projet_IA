@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "Grid.hpp"
@@ -28,16 +29,16 @@ int main() {
                 window.close();
         }
 
-        player.update(deltaTime, grid);
-        for (auto& enemy : enemies) {
-            enemy.update(deltaTime, grid);
+        if (Keyboard::isKeyPressed(Keyboard::W)) {
+            manager.setMenacedState();
         }
+
+        player.update(deltaTime, grid);
 
         window.clear();
         grid.draw(window);
         window.draw(player.shape);
-        for (const auto& enemy : enemies)
-            window.draw(enemy.shape);
+        manager.update(window,deltaTime,grid,player.shape.getGlobalBounds());
         window.display();
     }
     return 0;
